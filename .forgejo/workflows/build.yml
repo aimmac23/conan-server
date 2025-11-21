@@ -1,0 +1,15 @@
+name: ci
+
+on:
+  push:
+    branches: master
+
+jobs:
+  login:
+    runs-on: docker
+    container: docker.aimmac23.com/aim/base-builder:latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: podman login -u ${{ vars.REGISTRY_USERNAME  }} -p ${{ secrets.REGISTRY_SECRET  }} docker.aimmac23.com
+      - run: podman build -t docker.aimmac23.com/aim/conan-server --layers --cache
+      - run: podman push docker.aimmac23.com/aim/conan-server
