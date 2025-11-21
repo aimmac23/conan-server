@@ -11,5 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: podman login -u ${{ vars.REGISTRY_USERNAME  }} -p ${{ secrets.REGISTRY_SECRET  }} docker.aimmac23.com
-      - run: podman build -t docker.aimmac23.com/aim/conan-server --layers
+      - run: podman build -t docker.aimmac23.com/aim/conan-server --layers .
       - run: podman push docker.aimmac23.com/aim/conan-server
