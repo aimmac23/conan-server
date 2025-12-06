@@ -3,6 +3,16 @@ entries:
   conan-server:
   - apiVersion: v2
     appVersion: 2.23.0
+    created: "2025-12-06T18:36:08.135434703Z"
+    description: A Helm chart for Kubernetes
+    digest: 46fbb20a85f2db767520be5452847da04db3697de9e417bf1e7dde7767ee493e
+    name: conan-server
+    type: application
+    urls:
+    - https://github.com/aimmac23/conan-server/releases/download/conan-server-0.1.1/conan-server-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 2.23.0
     created: "2025-12-05T21:31:17.025958029Z"
     description: A Helm chart for Kubernetes
     digest: e73e01d98330feb6d6ce6d4872103a9bb58b9a87031c43e5b5ff9903f149d9b1
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/aimmac23/conan-server/releases/download/conan-server-0.1.0/conan-server-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-05T21:31:17.025962968Z"
+generated: "2025-12-06T18:36:08.135441465Z"
