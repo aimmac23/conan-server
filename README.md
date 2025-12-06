@@ -3,6 +3,7 @@
 This repo contains the Dockerfile definition for [Conan Server](https://docs.conan.io/2/reference/conan_server.html)
 
 Docker Hub: https://hub.docker.com/r/aimmac23/conan-server
+Helm Chart: https://artifacthub.io/packages/helm/conan-server/conan-server
 
 ## Docker Image
 
