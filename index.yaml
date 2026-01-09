@@ -3,6 +3,16 @@ entries:
   conan-server:
   - apiVersion: v2
     appVersion: 2.23.0
+    created: "2026-01-09T13:11:13.603634138Z"
+    description: A Helm chart for Conan Server (C++ dependency and package  management)
+    digest: 123ce155532c4bfcd596433cf16733553946a2a6ac1235e0d5062fec01d97395
+    name: conan-server
+    type: application
+    urls:
+    - https://github.com/aimmac23/conan-server/releases/download/conan-server-0.2.0/conan-server-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 2.23.0
     created: "2025-12-06T18:39:44.724393005Z"
     description: A Helm chart for Conan Server (C++ dependency and package  management)
     digest: 3ece56ed54ba732ccad5e6ef416f3097883720424e7a44078ec5502bfa8a02ee
@@ -31,4 +41,4 @@ entries:
     urls:
     - https://github.com/aimmac23/conan-server/releases/download/conan-server-0.1.0/conan-server-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-06T18:39:44.724410909Z"
+generated: "2026-01-09T13:11:13.603651812Z"
