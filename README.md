@@ -18,8 +18,6 @@ Some volume mounting may be required to pass in the configuration file. Using th
 
 Note that this Helm chart is primarily targeted to accelerating container-based build pipelines as a write-back cache, and not for persistent Conan package distribution. The permissioning is far too trivial for anything else, and will likely be a security vulnerability. The [Conan documentation recommends Artifactory](https://docs.conan.io/2/reference/conan_server.html] (or similar)
 
-Persistent Volumes not currently supported in this Helm chart, so it currently drops the cached packages on restart.
-
 ### Installing
 
 Add the Helm repo:

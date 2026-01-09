@@ -13,7 +13,6 @@
 
 ## Out of Scope
 
- - Any purpose that requires persistence over restarts (PersistentVolumes not currently in Helm Chart)
  - Any purpose that requires non-trivial security permissioning - use Artifactory for that.
 
 ## Installing
