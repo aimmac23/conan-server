@@ -13,7 +13,7 @@ data:
     port: {{ .Values.service.targetPort }}
     public_port: {{ .Values.service.port }}
     
-    disk_storage_path: /tmp
+    disk_storage_path: /data
     
     [users]
     {{ .Values.configFile.users }}
