@@ -162,6 +162,16 @@ tolerations: []
 
 affinity: {}
 
+persistence:
+  enabled: false
+  annotations: {}
+  finalizers: {}
+  accessModes:
+  - ReadWriteMany
+  size: 10Gi
+  volumeName: ""
+  storageClassName: ""
+
 configFile:
   # Server read permissions (default allow-all)
   readPermissions: "*/*@*/*: *"

@@ -72,8 +72,15 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
       volumes:
+      {{- if not .Values.persistence.enabled }}
       - name: server-data
         emptyDir: {}
+      {{- end }}
+      {{- if .Values.persistence.enabled }}
+      - name: server-data
+        persistentVolumeClaim:
+          claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "conan-server.fullname" . }}{{- end }}
+      {{- end }}
       - name: config
         configMap:
           name: {{ include "conan-server.fullname" . }}
