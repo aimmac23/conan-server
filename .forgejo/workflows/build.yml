@@ -26,5 +26,6 @@ jobs:
       - run: podman login -u ${{ vars.REGISTRY_USERNAME  }} -p ${{ secrets.REGISTRY_SECRET  }} docker.aimmac23.com
       - run: podman pull docker.aimmac23.com/aim/conan-server-arm64
       - run: podman pull docker.aimmac23.com/aim/conan-server-arm32
-      - run: podman manifest create docker.aimmac23.com/aim/conan-server --amend docker.aimmac23.com/aim/conan-server-arm64 --amend docker.aimmac23.com/aim/conan-server-arm32
+      - run: podman pull docker.aimmac23.com/aim/conan-server-amd64
+      - run: podman manifest create docker.aimmac23.com/aim/conan-server --amend docker.aimmac23.com/aim/conan-server-arm64 --amend docker.aimmac23.com/aim/conan-server-arm32 --amend docker.aimmac23.com/aim/conan-server-amd64
       - run: podman manifest push docker.aimmac23.com/aim/conan-server
