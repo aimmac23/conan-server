@@ -38,6 +38,8 @@ jobs:
       - run: podman pull docker.aimmac23.com/aim/conan-server-amd64:${{ forgejo.ref_name }}
       - run: podman manifest create docker.aimmac23.com/aim/conan-server:${{ forgejo.ref_name }} --amend docker.aimmac23.com/aim/conan-server-arm64:${{ forgejo.ref_name }} --amend docker.aimmac23.com/aim/conan-server-arm32:${{ forgejo.ref_name }} --amend docker.aimmac23.com/aim/conan-server-amd64:${{ forgejo.ref_name }}
       - run: podman manifest push docker.aimmac23.com/aim/conan-server:${{ forgejo.ref_name }}
+      - run: podman tag docker.aimmac23.com/aim/conan-server:${{ forgejo.ref_name }} docker.io/aimmac23/conan-server:${{ forgejo.ref_name }}
+      - run: podman tag docker.aimmac23.com/aim/conan-server:${{ forgejo.ref_name }} docker.io/aimmac23/conan-server:latest
       - run: podman manifest push docker.io/aimmac23/conan-server:${{ forgejo.ref_name }}
       - run: podman manifest push docker.io/aimmac23/conan-server:latest
 
