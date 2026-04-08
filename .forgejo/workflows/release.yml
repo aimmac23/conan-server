@@ -18,8 +18,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: podman login -u ${{ vars.REGISTRY_USERNAME  }} -p ${{ secrets.REGISTRY_SECRET  }} docker.aimmac23.com
-      - run: podman build -t docker.aimmac23.com/aim/conan-server-${{ matrix.arch }}:${{ forgejo.ref }} --net host .
-      - run: podman push docker.aimmac23.com/aim/conan-server-${{ matrix.arch }}:${{ forgejo.ref }}
+      - run: podman build -t docker.aimmac23.com/aim/conan-server-${{ matrix.arch }}:${{ forgejo.ref_name }} --net host .
+      - run: podman push docker.aimmac23.com/aim/conan-server-${{ matrix.arch }}:${{ forgejo.ref_name }}
 
   multiarch-push:
     runs-on: docker
@@ -33,11 +33,11 @@ jobs:
     steps:
       - run: podman login -u ${{ vars.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_SECRET }} docker.aimmac23.com
       - run: podman login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }} docker.io
-      - run: podman pull docker.aimmac23.com/aim/conan-server-arm64:${{ forgejo.ref }}
-      - run: podman pull docker.aimmac23.com/aim/conan-server-arm32:${{ forgejo.ref }}
-      - run: podman pull docker.aimmac23.com/aim/conan-server-amd64:${{ forgejo.ref }}
-      - run: podman manifest create docker.aimmac23.com/aim/conan-server:${{ forgejo.ref }} --amend docker.aimmac23.com/aim/conan-server-arm64:${{ forgejo.ref }} --amend docker.aimmac23.com/aim/conan-server-arm32:${{ forgejo.ref }} --amend docker.aimmac23.com/aim/conan-server-amd64:${{ forgejo.ref }}
-      - run: podman manifest push docker.aimmac23.com/aim/conan-server:${{ forgejo.ref }}
-      - run: podman manifest push docker.io/aimmac23/conan-server:${{ forgejo.ref }}
+      - run: podman pull docker.aimmac23.com/aim/conan-server-arm64:${{ forgejo.ref_name }}
+      - run: podman pull docker.aimmac23.com/aim/conan-server-arm32:${{ forgejo.ref_name }}
+      - run: podman pull docker.aimmac23.com/aim/conan-server-amd64:${{ forgejo.ref_name }}
+      - run: podman manifest create docker.aimmac23.com/aim/conan-server:${{ forgejo.ref_name }} --amend docker.aimmac23.com/aim/conan-server-arm64:${{ forgejo.ref }} --amend docker.aimmac23.com/aim/conan-server-arm32:${{ forgejo.ref }} --amend docker.aimmac23.com/aim/conan-server-amd64:${{ forgejo.ref }}
+      - run: podman manifest push docker.aimmac23.com/aim/conan-server:${{ forgejo.ref_name }}
+      - run: podman manifest push docker.io/aimmac23/conan-server:${{ forgejo.ref_name }}
       - run: podman manifest push docker.io/aimmac23/conan-server:latest
 
