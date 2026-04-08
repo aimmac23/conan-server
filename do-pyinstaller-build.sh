@@ -4,7 +4,7 @@ set -e
 
 git clone https://github.com/conan-io/conan.git
 cd conan
-git checkout 2.23.0
+git checkout 2.27.0
 
 python3 -m venv venv
 . venv/bin/activate
