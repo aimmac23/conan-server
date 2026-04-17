@@ -30,5 +30,6 @@ jobs:
       image: docker.io/aquasec/trivy
       env:
         TRIVY_PASSWORD: ${{ secrets.REGISTRY_SECRET }}
+        TRIVY_DISABLE_VEX_NOTICE: true
     steps:
       - run: trivy image docker.aimmac23.com/aim/conan-server-arm64 --username ${{ secrets.REGISTRY_USERNAME }}
