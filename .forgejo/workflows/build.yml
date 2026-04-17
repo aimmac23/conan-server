@@ -24,15 +24,11 @@ jobs:
 
   trivy:
     needs:
-      - build:
+      - build
     runs-on: docker-arm64
     container:
       image: docker.io/aquasec/trivy
       env:
         TRIVY_PASSWORD: ${{ secrets.REGISTRY_SECRET }}
-
-      credentials:
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_SECRET }}
     steps:
       - run: trivy image docker.aimmac23.com/aim/conan-server-arm64 --username ${{ secrets.REGISTRY_USERNAME }}
