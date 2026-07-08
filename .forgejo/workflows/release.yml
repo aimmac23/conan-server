@@ -19,6 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: podman login -u ${{ vars.REGISTRY_USERNAME  }} -p ${{ secrets.REGISTRY_SECRET  }} docker.aimmac23.com
       - run: podman build -t docker.aimmac23.com/aim/conan-server-${{ matrix.arch }}:${{ forgejo.ref_name }} --net host .
+      - run: ./check-container-startup.sh docker.aimmac23.com/aim/conan-server-${{ matrix.arch }}:${{ forgejo.ref_name }}
       - run: podman push docker.aimmac23.com/aim/conan-server-${{ matrix.arch }}:${{ forgejo.ref_name }}
 
   multiarch-push:
