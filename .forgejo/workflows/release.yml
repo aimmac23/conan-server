@@ -11,7 +11,7 @@ jobs:
         arch: ["arm64", "arm32", "amd64"]
     runs-on: docker-${{ matrix.arch }}
     container:
-      image: docker.aimmac23.com/aim/base-builder:latest
+      image: docker.aimmac23.com/aim/base-builder:forky
       credentials:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_SECRET }}
@@ -26,7 +26,7 @@ jobs:
     needs:
       - build
     container:
-      image: docker.aimmac23.com/aim/base-builder:latest
+      image: docker.aimmac23.com/aim/base-builder:forky
       credentials:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_SECRET }}

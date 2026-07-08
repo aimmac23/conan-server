@@ -1,4 +1,4 @@
-FROM debian:trixie-slim as builder
+FROM debian:forky-slim as builder
 
 RUN apt-get update && apt-get install -y pip python3 git python3-venv  && rm -rf /var/lib/apt/lists/*
 
@@ -7,7 +7,7 @@ RUN ./do-pyinstaller-build.sh
 
 
 
-FROM debian:trixie-slim
+FROM debian:forky-slim
 
 COPY --from=builder conan/dist/conan_server/_internal ./_internal
 COPY --from=builder conan/dist/conan_server/conan_server .
