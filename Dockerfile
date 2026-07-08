@@ -1,6 +1,6 @@
 FROM debian:forky-slim as builder
 
-RUN apt-get update && apt-get install -y pip python3 git python3-venv  && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y pip python3 git python3-venv binutils  && rm -rf /var/lib/apt/lists/*
 
 ADD do-pyinstaller-build.sh .
 RUN ./do-pyinstaller-build.sh
