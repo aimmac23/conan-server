@@ -1,13 +1,13 @@
-FROM debian:forky-slim as builder
+FROM alpine:3.23.5 as builder
 
-RUN apt-get update && apt-get install -y pip python3 git python3-venv binutils  && rm -rf /var/lib/apt/lists/*
+RUN apk --no-cache add binutils python3 git
 
 ADD do-pyinstaller-build.sh .
 RUN ./do-pyinstaller-build.sh
 
 
 
-FROM debian:forky-slim
+FROM alpine:3.23.5
 
 COPY --from=builder conan/dist/conan_server/_internal ./_internal
 COPY --from=builder conan/dist/conan_server/conan_server .
