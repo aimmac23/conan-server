@@ -1,0 +1,17 @@
+{{- $fullName := include "conan-server.fullname" . -}}
+{{- $labels := include "conan-server.labels" . -}}
+{{- $selectorLabels := include "conan-server.selectorLabels" . -}}
+
+{{- with .Values.podDisruptionBudget -}}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- $labels | nindent 4 }}
+spec:
+   {{- toYaml . | nindent 2 }}
+  selector:
+    matchLabels:
+      {{- $selectorLabels | nindent 6 }}
+{{- end }}
