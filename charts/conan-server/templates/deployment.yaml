@@ -42,7 +42,7 @@ spec:
       initContainers:
         - name: config-init
           image: busybox:1.38.0-glibc
-          command: ["/bin/sh", "-c", "ln -sf /config/server.conf /conan-root/server.conf"]
+          command: ["/bin/sh", "-c", "ln -sf /config/server.conf /conan-root/server.conf && mkdir -p /conan-root/tmp"]
           {{- with .Values.securityContext }}
           securityContext:
             {{- toYaml . | nindent 12 }}
@@ -63,6 +63,8 @@ spec:
           env:
             - name: CONAN_SERVER_HOME
               value: /conan-root
+            - name: TMPDIR
+              value: /conan-root/tmp
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
