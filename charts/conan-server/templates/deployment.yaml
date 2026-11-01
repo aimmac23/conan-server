@@ -11,6 +11,10 @@ spec:
   selector:
     matchLabels:
       {{- include "conan-server.selectorLabels" . | nindent 6 }}
+  {{- with .Values.strategy }}
+  strategy:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -28,6 +32,9 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "conan-server.serviceAccountName" . }}
+      {{- if not .Values.serviceAccount.automount}}
+      automountServiceAccountToken: false
+      {{- end }}
       {{- with .Values.podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
