@@ -1,4 +1,4 @@
-FROM alpine:3.23.5 as builder
+FROM alpine:3.24.3 as builder
 
 RUN apk --no-cache add binutils python3 git
 
@@ -7,7 +7,7 @@ RUN ./do-pyinstaller-build.sh
 
 
 
-FROM alpine:3.23.5
+FROM alpine:3.24.3
 
 COPY --from=builder conan/dist/conan_server/_internal ./_internal
 COPY --from=builder conan/dist/conan_server/conan_server .
