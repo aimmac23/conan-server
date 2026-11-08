@@ -183,3 +183,6 @@ configFile:
     defaultUser:Password
 
 podDisruptionBudget: {}
+
+networkPolicy:
+  enabled: false
